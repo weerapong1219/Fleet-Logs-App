@@ -133,7 +133,7 @@
         // ดึงค่าจากฟอร์มเตรียมส่งออก
         const formData = {
             driverName: document.getElementById('driverName').value,
-            carId: document.getElementById('carId').value,
+            carplateId: document.getElementById('carplateId').value,
             refuelDate: document.getElementById('refuelDate').value,
             mileage: Number(document.getElementById('mileage').value),
             price: Number(document.getElementById('price').value),
@@ -155,8 +155,9 @@
                 alert("บันทึกข้อมูลสำเร็จเรียบร้อยแล้วครับ! 👍");
                 // ล้างค่าในฟอร์มหลังจากส่งเสร็จ (ยกเว้นวันที่)
                 document.getElementById('mileage').value = '';
-                document.getElementById('liters').value = '';
                 document.getElementById('price').value = '';
+				document.getElementById('liters').value = '';
+                document.getElementById('amount').value = '';
             } else {
                 alert("เกิดข้อผิดพลาดในการส่งข้อมูล กรุณาลองใหม่อีกครั้ง");
             }
