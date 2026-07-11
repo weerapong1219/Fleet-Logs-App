@@ -121,16 +121,13 @@
 <script>
     // ตั้งค่าวันที่ปัจจุบันให้อัตโนมัติเมื่อเปิดหน้าเว็บ
     document.getElementById('refuelDate').value = new Date().toISOString().split('T')[0];
-
     document.getElementById('recordDate').value = new Date().toISOString().split('T')[0];
 
     document.getElementById('refuelForm').addEventListener('submit', function(e) {
-        e.preventDefault(); // ป้องกันหน้าจอรีเฟรชเมื่อกดส่ง
+        e.preventDefault(); 
 
-        // ⚠️ นำลิงก์ URL ที่ก๊อปปี้มาจาก Power Automate ในส่วนที่ 1 มาวางแทนที่ตรงนี้
         const webhookUrl = "https://script.google.com/macros/s/AKfycby3C6unXVr8URUXGxwVl7FvXJ59t9KYigWsmGUdW-Xmrr393yq67gqHqA-R7rvVjMnmig/exec"; 
 
-        // ดึงค่าจากฟอร์มเตรียมส่งออก
         const formData = {
             driverName: document.getElementById('driverName').value,
             carplateId: document.getElementById('carplateId').value,
@@ -142,29 +139,29 @@
             recordDate: document.getElementById('recordDate').value
         };
 
-        // ยิงข้อมูลไปที่ Power Automate ด้วย Fetch API
+        // ปรับ Mode เป็น no-cors เพื่อข้ามระบบความปลอดภัยของเบราว์เซอร์ที่บล็อก Google
         fetch(webhookUrl, {
             method: "POST",
+            mode: "no-cors", 
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "text/plain"
             },
             body: JSON.stringify(formData)
         })
         .then(response => {
-            if (response.ok) {
-                alert("บันทึกข้อมูลสำเร็จเรียบร้อยแล้วครับ! 👍");
-                // ล้างค่าในฟอร์มหลังจากส่งเสร็จ (ยกเว้นวันที่)
-                document.getElementById('mileage').value = '';
-                document.getElementById('price').value = '';
-				document.getElementById('liters').value = '';
-                document.getElementById('amount').value = '';
-            } else {
-                alert("เกิดข้อผิดพลาดในการส่งข้อมูล กรุณาลองใหม่อีกครั้ง");
-            }
+            // ในโหมด no-cors ตัว response.ok จะเป็น false เสมอ แต่ข้อมูลเข้าชีทปกติ
+            // เราจึงเปลี่ยนมาแจ้งเตือนความสำเร็จทันทีหลังยิงข้อมูลเสร็จ
+            alert("ส่งข้อมูลบันทึกสำเร็จเรียบร้อยแล้วครับ! 👍");
+            
+            // ล้างค่าในฟอร์มหลังจากส่งเสร็จ
+            document.getElementById('mileage').value = '';
+            document.getElementById('price').value = '';
+            document.getElementById('liters').value = '';
+            document.getElementById('amount').value = '';
         })
         .catch(error => {
             console.error("Error:", error);
-            alert("ไม่สามารถเชื่อมต่อระบบได้ กรุณาเช็กอินเทอร์เน็ต");
+            alert("ไม่สามารถเชื่อมต่อระบบได้ กรุณาเช็คอินเตอร์เน็ต");
         });
     });
 </script>
