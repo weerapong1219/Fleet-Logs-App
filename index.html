@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บันทึกการเติมน้ำมัน</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f4f6f9; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .form-container { max-width: 500px; margin: 30px auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .btn-submit { background-color: #0d6efd; color: white; width: 100%; padding: 12px; font-size: 18px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="form-container">
+        <h3 class="text-center mb-4 text-primary font-weight-bold">⛽บันทึกการเติมน้ำมัน</h3>
+        
+        <form id="refuelForm">
+            <div class="mb-3">
+                <label class="form-label">รายชื่อพนักงานขับรถ</label>
+                <select class="form-select" id="driverName" required>
+                    <option value="">-- เลือกชื่อของคุณ --</option>
+                    <option value="Aekalin">Aekalin</option>
+                    <option value="Hanh">Hanh</option>
+                    <option value="Jonut">Jonut</option>
+                    <option value="Khamly">Khamly</option>
+                    <option value="Kisavanh">Kisavanh</option>
+                    <option value="Korlakan">Korlakan</option>
+                    <option value="Ledvilai">Ledvilai</option>
+                    <option value="Noukone">Noukone</option>
+                    <option value="Oudaphone">Oudaphone</option>
+                    <option value="Outdavong">Outdavong</option>
+                    <option value="Sanathip">Sanathip</option>
+                    <option value="Seenathip">Seenathip</option>
+                    <option value="Sengphoukham">Sengphoukham</option>
+                    <option value="Somsee">Somsee</option>
+                    <option value="Sounisai">Sounisai</option>
+                    <option value="Thepnakhone">Thepnakhone</option>
+                    <option value="Thon">Thon</option>
+                    <option value="Tolee">Tolee</option>
+                    <option value="Ton">Ton</option>
+                    <option value="Verkham">Verkham</option>
+                    <option value="Viengthong">Viengthong</option>
+                    <option value="Vilaysit">Vilaysit</option>
+                    <option value="Vongounit">Vongounit</option>
+                    <option value="Yasamone">Yasamone</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">หมายเลขทะเบียนรถ</label>
+                <select class="form-select" id="carplateId" required>
+                    <option value="">-- เลือกทะเบียนรถ --</option>
+                    <option value="0464">0464</option>
+                    <option value="0465">0465</option>
+                    <option value="0470">0470</option>
+                    <option value="0471">0471</option>
+                    <option value="3664">3664</option>
+                    <option value="3669">3669</option>
+                    <option value="5315">5315</option>
+                    <option value="5385">5385</option>
+                    <option value="5533">5533</option>
+                    <option value="5541">5541</option>
+                    <option value="5542">5542</option>
+                    <option value="5543">5543</option>
+                    <option value="5544">5544</option>
+                    <option value="5545">5545</option>
+                    <option value="5546">5546</option>
+                    <option value="5549">5549</option>
+                    <option value="5578">5578</option>
+                    <option value="5579">5579</option>
+                    <option value="5581">5581</option>
+                    <option value="6100">6100</option>
+                    <option value="9537">9537</option>
+                    <option value="9538">9538</option>
+                    <option value="9539">9539</option>
+                    <option value="9540">9540</option>
+                    <option value="9641">9641</option>
+                    <option value="9642">9642</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">วันที่เติมน้ำมัน</label>
+                <input type="date" class="form-control" id="refuelDate" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">เลขไมล์ล่าสุด (กิโลเมตร)</label>
+                <input type="number" class="form-control" id="mileage" placeholder="ตัวอย่าง: 150000" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">ราคาน้ำมัน</label>
+                <input type="number" class="form-control" id="price" placeholder="ตัวอย่าง: 25000" required>
+            </div>
+
+	    <div class="mb-3">
+                <label class="form-label">จำนวนลิตรที่เติม (ทศนิยม 3 ตำแหน่ง)</label>
+                <input type="number" class="form-control" id="liters" step="0.001" placeholder="ตัวอย่าง: 45.125" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">มูลค่าน้ำมันที่เติม</label>
+                <input type="number" class="form-control" id="amount" placeholder="ตัวอย่าง: 2000000" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">วันที่บันทึกข้อมูล</label>
+                <input type="date" class="form-control" id="recordDate" required>
+            </div>
+
+            <button type="submit" class="btn btn-submit mt-3">ส่งข้อมูลบันทึก</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // ตั้งค่าวันที่ปัจจุบันให้อัตโนมัติเมื่อเปิดหน้าเว็บ
+    document.getElementById('refuelDate').value = new Date().toISOString().split('T')[0];
+
+    document.getElementById('recordDate').value = new Date().toISOString().split('T')[0];
+
+    document.getElementById('refuelForm').addEventListener('submit', function(e) {
+        e.preventDefault(); // ป้องกันหน้าจอรีเฟรชเมื่อกดส่ง
+
+        // ⚠️ นำลิงก์ URL ที่ก๊อปปี้มาจาก Power Automate ในส่วนที่ 1 มาวางแทนที่ตรงนี้
+        const webhookUrl = https://defaultcbfd37771c6d46fba183a5fd7517b1.13.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/29/workflows/16462822e44d46ad8e3ce313bd1cca51/triggers/manual/paths/invoke?api-version=1; 
+
+        // ดึงค่าจากฟอร์มเตรียมส่งออก
+        const formData = {
+            driverName: document.getElementById('driverName').value,
+            carId: document.getElementById('carId').value,
+            refuelDate: document.getElementById('refuelDate').value,
+            mileage: Number(document.getElementById('mileage').value),
+            price: Number(document.getElementById('price').value),
+            liters: Number(document.getElementById('liters').value),
+            amount: Number(document.getElementById('amount').value),
+            recordDate: document.getElementById('recordDate').value
+        };
+
+        // ยิงข้อมูลไปที่ Power Automate ด้วย Fetch API
+        fetch(webhookUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => {
+            if (response.ok) {
+                alert("บันทึกข้อมูลสำเร็จเรียบร้อยแล้วครับ! 👍");
+                // ล้างค่าในฟอร์มหลังจากส่งเสร็จ (ยกเว้นวันที่)
+                document.getElementById('mileage').value = '';
+                document.getElementById('liters').value = '';
+                document.getElementById('price').value = '';
+            } else {
+                alert("เกิดข้อผิดพลาดในการส่งข้อมูล กรุณาลองใหม่อีกครั้ง");
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("ไม่สามารถเชื่อมต่อระบบได้ กรุณาเช็กอินเทอร์เน็ต");
+        });
+    });
+</script>
+
+</body>
+</html>
