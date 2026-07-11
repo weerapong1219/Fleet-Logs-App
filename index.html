@@ -19,35 +19,34 @@
         
         <form id="refuelForm">
             <div class="mb-3">
-                <label class="form-label">รายชื่อพนักงานขับรถ</label>
-                <select class="form-select" id="driverName" required>
-                    <option value="">-- เลือกชื่อของคุณ --</option>
-                    <option value="Aekalin">Aekalin</option>
-                    <option value="Hanh">Hanh</option>
-                    <option value="Jonut">Jonut</option>
-                    <option value="Khamly">Khamly</option>
-                    <option value="Kisavanh">Kisavanh</option>
-                    <option value="Korlakan">Korlakan</option>
-                    <option value="Ledvilai">Ledvilai</option>
-                    <option value="Noukone">Noukone</option>
-                    <option value="Oudaphone">Oudaphone</option>
-                    <option value="Outdavong">Outdavong</option>
-                    <option value="Sanathip">Sanathip</option>
-                    <option value="Seenathip">Seenathip</option>
-                    <option value="Sengphoukham">Sengphoukham</option>
-                    <option value="Somsee">Somsee</option>
-                    <option value="Sounisai">Sounisai</option>
-                    <option value="Thepnakhone">Thepnakhone</option>
-                    <option value="Thon">Thon</option>
-                    <option value="Tolee">Tolee</option>
-                    <option value="Ton">Ton</option>
-                    <option value="Verkham">Verkham</option>
-                    <option value="Viengthong">Viengthong</option>
-                    <option value="Vilaysit">Vilaysit</option>
-                    <option value="Vongounit">Vongounit</option>
-                    <option value="Yasamone">Yasamone</option>
-                    <option value="Other">Other</option>
-                </select>
+                <label class="form-label">รายชื่อพนักงานขับรถ (เลือกหรือพิมพ์ชื่อใหม่ได้)</label>
+                <input type="text" class="form-control" id="driverName" list="driverOptions" placeholder="-- เลือกชื่อของคุณ หรือพิมพ์ชื่อใหม่ --" required>
+                <datalist id="driverOptions">
+                    <option value="Aekalin">
+                    <option value="Hanh">
+                    <option value="Jonut">
+                    <option value="Khamly">
+                    <option value="Kisavanh">
+                    <option value="Korlakan">
+                    <option value="Ledvilai">
+                    <option value="Noukone">
+                    <option value="Oudaphone">
+                    <option value="Outdavong">
+                    <option value="Sanathip">
+                    <option value="Seenathip">
+                    <option value="Sengphoukham">
+                    <option value="Somsee">
+                    <option value="Sounisai">
+                    <option value="Thepnakhone">
+                    <option value="Thon">
+                    <option value="Tolee">
+                    <option value="Ton">
+                    <option value="Verkham">
+                    <option value="Viengthong">
+                    <option value="Vilaysit">
+                    <option value="Vongounit">
+                    <option value="Yasamone">
+                </datalist>
             </div>
 
             <div class="mb-3">
@@ -154,6 +153,8 @@
             alert("ส่งข้อมูลบันทึกสำเร็จเรียบร้อยแล้วครับ! 👍");
             
             // ล้างค่าในฟอร์มหลังจากส่งเสร็จ
+			document.getElementById('driverName').value = '';
+            document.getElementById('carplateId').value = '';			
             document.getElementById('mileage').value = '';
             document.getElementById('price').value = '';
             document.getElementById('liters').value = '';
